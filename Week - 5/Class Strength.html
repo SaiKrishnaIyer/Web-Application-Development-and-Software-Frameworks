@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Class Strength</title>
+</head>
+<body>
+    <h2>Today's class Strength</h2>
+    <label for="TotalStrength">Total Strength:</label>
+    <br>
+    <input type="number" id="TotalStrength">
+    </br>
+    <label for="Presenties">Presenties:</label>
+    <br>
+    <input type="number" id="Presenties">
+    </br>
+    <label for="Absent">Absent:</label>
+    <br>
+    <input type="number" id="Absent">
+    </br>
+    <p>Today Class Strength: <span id="TodayClassStrength"></span></p>
+    <button onclick="calculateClassStrength()">Submit</button>
+
+    <script>
+        function calculateClassStrength(){
+            var x = document.getElementById("TotalStrength").value;
+            var y = document.getElementById("Presenties").value;
+            var z = document.getElementById("Absent").value;
+            var todayClassStrength = x - z;
+            document.getElementById("TodayClassStrength").innerText = todayClassStrength;
+        }
+    </script>
+</body>
+</html>

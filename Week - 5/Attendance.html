@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class Attendance</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+
+    form {
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Class Attendance</h1>
+
+  <p>Total Strength: <span id="totalStrength">0</span></p>
+  <p>Absent Count: <span id="absentCount">0</span></p>
+  <p>Present Count: <span id="presentCount">0</span></p>
+
+  <form id="attendanceForm">
+    <label for="studentName">Student Name:</label>
+    <input type="text" id="studentName" required />
+
+    <label for="attendanceStatus">Attendance Status:</label>
+    <select id="attendanceStatus" required>
+      <option value="present">Present</option>
+      <option value="absent">Absent</option>
+    </select>
+
+    <button type="button" onclick="submitAttendance()">Submit</button>
+  </form>
+
+  <script>
+    // Initialize variables
+    let totalStrength = 0;
+    let absentCount = 0;
+    let presentCount = 0;
+
+    // Function to update attendance counts and display
+    function updateAttendanceDisplay() {
+      document.getElementById('totalStrength').textContent = totalStrength;
+      document.getElementById('absentCount').textContent = absentCount;
+      document.getElementById('presentCount').textContent = presentCount;
+    }
+
+    // Function to handle form submission
+    function submitAttendance() {
+      const studentName = document.getElementById('studentName').value;
+      const attendanceStatus = document.getElementById('attendanceStatus').value;
+
+      // Update counts based on attendance status
+      if (attendanceStatus === 'absent') {
+        absentCount++;
+      } else {
+        presentCount++;
+      }
+
+      // Increment total strength
+      totalStrength++;
+
+      // Update display
+      updateAttendanceDisplay();
+
+      // Clear form inputs
+      document.getElementById('studentName').value = '';
+      document.getElementById('attendanceStatus').value = 'present';
+    }
+  </script>
+</body>
+</html>

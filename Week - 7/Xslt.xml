@@ -1,0 +1,28 @@
+<?xml-stylesheet href="student-info.xsl" type="text/xsl"?>
+<student-info>
+    <student>
+        <sname>Moksha</sname>
+        <spinno>1291</spinno>
+        <sbranch>CSE</sbranch>
+   </student>
+   <student>
+        <sname>Govardhan</sname>
+        <spinno>2136</spinno>
+        <sbranch>CSE</sbranch>
+    </student>
+    <student>
+        <sname>Shreyansh</sname>
+        <spinno>0743</spinno>
+        <sbranch>CSE</sbranch>
+    </student>
+    <student>
+        <sname>Sai Varun Reddy</sname>
+        <spinno>1250</spinno>
+        <sbranch>CSE</sbranch>
+    </student>
+    <student>
+        <sname>Tharun</sname>
+        <spinno>1131</spinno>
+        <sbranch>CSE</sbranch>
+    </student>
+</student-info>

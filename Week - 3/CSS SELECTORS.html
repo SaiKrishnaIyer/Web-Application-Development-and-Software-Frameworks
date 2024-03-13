@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>CSS Selector Basics</title>
+  <style>
+    /* Simple Selectors */
+    h1 {
+      color: blue;
+    }
+    
+    .intro {
+      font-weight: bold;
+    }
+    
+    /* Combinator Selectors */
+    p + p {
+      margin-top: 20px;
+    }
+    
+    /* Pseudo-class Selectors */
+    a:hover {
+      text-decoration: underline;
+    }
+    
+    /* Pseudo-element Selectors */
+    p::first-line {
+      font-size: 120%;
+    }
+    
+    /* Attribute Selectors */
+    [target="_blank"] {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to CSS Selector Basics</h1>
+  
+  <p class="intro">In CSS, selectors are powerful tools...</p>
+  
+  <p>This paragraph has a different style.</p>
+  <p>This paragraph will have extra margin at the top.</p>
+  
+  <p><a href="https://www.gitam.edu/" target="_blank">GITAM</a></p>
+  
+  <p>Explore the wonders of CSS selectors...</p>
+</body>
+</html>

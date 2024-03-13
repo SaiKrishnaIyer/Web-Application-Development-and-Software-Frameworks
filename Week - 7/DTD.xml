@@ -1,0 +1,7 @@
+<?xml-stylesheet href="xml_css.css" type="text/css"?>
+<!DOCTYPE student SYSTEM "student.dtd">
+<student>
+    <sname>Moksha</sname>
+    <spinno>1291</spinno>
+    <sbranch>CSE</sbranch>
+</student>

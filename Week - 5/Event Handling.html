@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Handling Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+        }
+
+        input {
+            font-size: 16px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Event Handling Example</h2>
+
+<button id="clickButton">Click me (onclick)</button>
+<input type="text" id="focusInput" placeholder="Focus me (onfocus)">
+<div id="mouseEventDiv" style="border: 1px solid #ccc; padding: 20px; margin: 20px;">
+    Mouse Events (onmousedown, onmouseup)
+</div>
+<input type="text" id="blurInput" placeholder="Blur me (onblur)">
+<select id="changeSelect">
+    <option value="option1">Option 1</option>
+    <option value="option2">Option 2</option>
+    <option value="option3">Option 3</option>
+</select>
+
+<script>
+    // onclick event
+    document.getElementById('clickButton').onclick = function () {
+        alert('Button clicked!');
+    };
+
+    // onfocus event
+    document.getElementById('focusInput').onfocus = function () {
+        this.style.backgroundColor = 'lightblue';
+    };
+
+    // onmousedown event
+    document.getElementById('mouseEventDiv').onmousedown = function () {
+        this.innerHTML = 'Mouse Down';
+    };
+
+    // onmouseup event
+    document.getElementById('mouseEventDiv').onmouseup = function () {
+        this.innerHTML = 'Mouse Up';
+    };
+
+    // onblur event
+    document.getElementById('blurInput').onblur = function () {
+        this.style.backgroundColor = 'lightcoral';
+    };
+
+    // onchange event
+    document.getElementById('changeSelect').onchange = function () {
+        alert('Selected option: ' + this.value);
+    };
+
+    // onload event
+    window.onload = function () {
+        alert('Page loaded!');
+    };
+</script>
+
+</body>
+</html>

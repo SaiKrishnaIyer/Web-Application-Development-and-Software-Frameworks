@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Navigation</title>
+    <script>
+        function NavPCs() {
+            // Check if the navigator object is available
+            if (window.navigator) {
+                var appName = window.navigator.appName;
+                var appVersion = window.navigator.appVersion;
+
+                alert("AppName: " + appName + "\nAppVersion: " + appVersion);
+                document.write("AppName: " + appName + "<br>AppVersion: " + appVersion);
+            } else {
+                alert("Navigator object not available.");
+            }
+        }
+    </script>
+</head>
+<body onload="NavPCs()">
+    <!-- Content goes here if needed -->
+</body>
+</html>

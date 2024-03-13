@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Addition Function</title>
+</head>
+<body>
+
+<script>
+    // Define a function for addition
+    function addNumbers() {
+        // Take input from the user
+        var number1 = parseFloat(prompt("Enter the first number:"));
+        var number2 = parseFloat(prompt("Enter the second number:"));
+
+        // Check if the input is valid numeric values
+        if (!isNaN(number1) && !isNaN(number2)) {
+            // Perform addition
+            var sum = number1 + number2;
+
+            // Display the result on the page
+            document.write("<strong>Result of Addition:</strong> " + sum);
+        } else {
+            // Display an error message if input is not valid
+            document.write("<strong>Error:</strong> Please enter valid numeric values for addition.");
+        }
+    }
+
+    // Call the function to perform addition
+    addNumbers();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Operations</title>
+</head>
+<body>
+
+<script>
+    // Original Array
+    var originalArray = [2, 1, 8, 9];
+    document.write("<strong>Original Array:</strong> " + originalArray + "<br><br>");
+
+    // 1. Using length
+    document.write("<strong>Array Length:</strong> " + originalArray.length + "<br>");
+
+    // 2. IndexOf
+    document.write("<strong>Index of 8:</strong> " + originalArray.indexOf(8) + "<br>");
+
+    // 3. Sort
+    var sortedArray = originalArray.slice().sort();
+    document.write("<strong>Sorted Array:</strong> " + sortedArray + "<br>");
+
+    // 4. Reverse
+    var reversedArray = originalArray.slice().reverse();
+    document.write("<strong>Reversed Array:</strong> " + reversedArray + "<br>");
+
+    // 5. Append 
+    originalArray.push(7);
+    document.write("<strong>Array after appending 7:</strong> " + originalArray + "<br>");
+
+    // 6. Concat
+    var newArray = originalArray.concat([10, 11]);
+    document.write("<strong>Concatenated Array:</strong> " + newArray + "<br>");
+
+    // 7. Push
+    newArray.push(12);
+    document.write("<strong>Array after pushing 12:</strong> " + newArray + "<br>");
+
+    // 8. Pop
+    var poppedElement = newArray.pop();
+    document.write("<strong>Array after popping:</strong> " + newArray + "<br>");
+    document.write("<strong>Popped Element:</strong> " + poppedElement + "<br>");
+
+    // 9. Slice
+    var slicedArray = newArray.slice(1, 4);
+    document.write("<strong>Sliced Array:</strong> " + slicedArray + "<br>");
+</script>
+
+</body>
+</html>

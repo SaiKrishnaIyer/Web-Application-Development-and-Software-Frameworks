@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="xml_css.css" type="text/css"?>
+<students>
+    <student>
+        <sname>K Santhana Gopala Krishnan</sname>
+        <spinno>1379</spinno>
+        <sbranch>CSE</sbranch>
+    </student>
+</students>

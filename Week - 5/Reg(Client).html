@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var phoneNumber = document.getElementById("phoneNumber").value;
+            var email = document.getElementById("email").value;
+
+            if (username.length < 15) {
+                document.getElementById("usernameError").innerText = "Username must be at least 15 characters";
+                return false;
+            }
+
+            if (password.length < 8) {
+                document.getElementById("passwordError").innerText = "Password must be at least 8 characters";
+                return false;
+            }
+
+            if (isNaN(phoneNumber) || phoneNumber.length !== 10) {
+                document.getElementById("phoneNumberError").innerText = "Invalid phone number";
+                return false;
+            }
+
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                document.getElementById("emailError").innerText = "Invalid email address";
+                return false;
+            }
+
+            window.validatedData = {
+                username: username,
+                password: password,
+                phoneNumber: phoneNumber,
+                email: email
+            };
+            return true;
+        }
+
+        function displayData() {
+            var data = window.validatedData;
+            if (data) {
+                alert("Submitted Data:\n" +
+                    "Username: " + data.username + "\n" +
+                    "Password: " + data.password + "\n" +
+                    "Phone Number: " + data.phoneNumber + "\n" +
+                    "Email: " + data.email);
+            } else {
+                alert("No validated data available.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Registration Form</h2>
+    <form onsubmit="return validateForm()">
+        <!-- Form fields and error spans -->
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <button onclick="displayData()">Display Validated Data</button>
+</body>
+</html>

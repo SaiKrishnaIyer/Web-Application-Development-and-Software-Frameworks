@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PopUpMessage()</title>
+</head>
+<script>
+    function PopUpMessage() {
+        var SelectedOption = document.querySelector('input[name="gender"]:checked');
+        if (SelectedOption) {
+            var SelectedValue = SelectedOption.value;
+            alert("You selected: " + SelectedValue);
+        }
+    }
+</script>
+<body>
+    <h1>Pop Up</h1>
+    <input type="radio" name="gender" value="Male" onchange="PopUpMessage()">Male
+    <br>
+    <input type="radio" name="gender" value="Female" onchange="PopUpMessage()">Female
+    </br>
+</body>
+</html>

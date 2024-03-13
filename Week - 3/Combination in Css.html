@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>CSS Combinators</title>
+  <style>
+    /* Descendant Selector */
+    div p {
+      color: #FFC300;
+    }
+
+    /* Child Selector */
+    div > p {
+      font-weight: bold;
+      color : #581845
+    }
+
+    /* Adjacent Sibling Selector */
+    h2 + p {
+      background-color: #F08080;
+    }
+
+    /* General Sibling Selector */
+    h2 ~ p {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <p>This is a paragraph inside a div.</p>
+    <h2>This is an h2 heading</h2>
+    <p>This paragraph is adjacent to the h2.</p>
+    <p>This is another paragraph adjacent to the h2.</p>
+    <p>This paragraph is a sibling but not immediately adjacent.</p>
+  </div>
+
+  <p>This paragraph is outside the div.</p>
+</body>
+</html>

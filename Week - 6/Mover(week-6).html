@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Moving elements</title>
+    <script>
+        function moveIt(img, newtop, newleft) {
+            var a = document.getElementById(img).style;
+            a.top = newtop + "px";
+            a.left = newleft + "px";
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <p>
+            <label>x coordinate: <input type="text" id="leftCoord" size="3"/></label><br/>
+            <label>y coordinate: <input type="text" id="topCoord" size="3"/></label><br/>
+            <input type="button" value="Move it" onclick="moveIt('img', document.getElementById('topCoord').value, document.getElementById('leftCoord').value)"/>
+        </p>
+    </form>
+    <div id="img" style="position: absolute; top: 115px; left: 0;"><img src="img.jpg" alt="not Found"/></div>
+</body>
+</html>

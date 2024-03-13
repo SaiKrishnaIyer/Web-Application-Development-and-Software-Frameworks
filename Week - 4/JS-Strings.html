@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Operations</title>
+</head>
+<body>
+
+<script>
+    // Original String
+    var originalString = "Welcome To gitam University";
+    document.write("<strong>Original String:</strong> " + originalString + "<br><br>");
+
+    // 1. Length
+    document.write("<strong>String Length:</strong> " + originalString.length + "<br>");
+
+    // 2. Convert to Uppercase
+    var upperCaseString = originalString.toUpperCase();
+    document.write("<strong>Uppercase String:</strong> " + upperCaseString + "<br>");
+
+    // 3. Convert to Lowercase
+    var lowerCaseString = originalString.toLowerCase();
+    document.write("<strong>Lowercase String:</strong> " + lowerCaseString + "<br>");
+
+    // 4. Substring
+    var substring = originalString.substring(11, 17);
+    document.write("<strong>Substring (11-17):</strong> " + substring + "<br>");
+
+    // 5. Concatenation
+    var concatenatedString = originalString.concat(", India");
+    document.write("<strong>Concatenated String:</strong> " + concatenatedString + "<br>");
+
+    // 6. Replace
+    var replacedString = originalString.replace("gitam", "Gandhi Institute of Technology and Management");
+    document.write("<strong>Replaced String:</strong> " + replacedString + "<br>");
+
+    // 7. IndexOf
+    var indexOfGitam = originalString.indexOf("gitam");
+    document.write("<strong>Index of 'gitam':</strong> " + indexOfGitam + "<br>");
+
+    // 8. Split
+    var splitArray = originalString.split(" ");
+    document.write("<strong>Split Array:</strong> " + splitArray + "<br>");
+</script>
+
+</body>
+</html>
