@@ -1,0 +1,115 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+public class Sohan {
+
+    public static void main(String[] args) {
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system",
+                    "123456789");
+            Statement stmt = con.createStatement();
+            stmt.executeUpdate("CREATE TABLE students2 (student_id NUMBER PRIMARY KEY, student_name VARCHAR(50), age NUMBER, email VARCHAR(50))");
+            System.out.println("Table created successfully.....");
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            PreparedStatement psmtInsert = con.prepareStatement("INSERT INTO students2 VALUES (?, ?, ?, ?)");
+            PreparedStatement psmtUpdate = con.prepareStatement("UPDATE students2 SET age = ?, email = ? WHERE student_id = ?");
+            PreparedStatement psmtDelete = con.prepareStatement("DELETE FROM students2 WHERE student_id = ?");
+            Statement stmtSelect = con.createStatement();
+
+            while (true) {
+                System.out.println("\n1. Insert Student");
+                System.out.println("2. Update Student");
+                System.out.println("3. Delete Student");
+                System.out.println("4. View All students2");
+                System.out.println("5. Exit");
+                System.out.print("Enter your choice: ");
+                int choice = Integer.parseInt(br.readLine());
+
+                switch (choice) {
+                    case 1:
+                        System.out.print("Enter Student ID: ");
+                        int id = Integer.parseInt(br.readLine());
+                        System.out.print("Enter Student Name: ");
+                        String name = br.readLine();
+                        System.out.print("Enter Student Age: ");
+                        int age = Integer.parseInt(br.readLine());
+                        System.out.print("Enter Student Email: ");
+                        String email = br.readLine();
+
+                        psmtInsert.setInt(1, id);
+                        psmtInsert.setString(2, name);
+                        psmtInsert.setInt(3, age);
+                        psmtInsert.setString(4, email);
+
+                        int insertedCount = psmtInsert.executeUpdate();
+                        if (insertedCount > 0)
+                            System.out.println(insertedCount + " Record(s) Inserted ");
+                        else
+                            System.out.println("No record inserted");
+                        break;
+
+                    case 2:
+                        System.out.print("Enter Student ID to Update: ");
+                        int updateId = Integer.parseInt(br.readLine());
+                        System.out.print("Enter New Age: ");
+                        int newAge = Integer.parseInt(br.readLine());
+                        System.out.print("Enter New Email: ");
+                        String newEmail = br.readLine();
+
+                        psmtUpdate.setInt(1, newAge);
+                        psmtUpdate.setString(2, newEmail);
+                        psmtUpdate.setInt(3, updateId);
+
+                        int updatedCount = psmtUpdate.executeUpdate();
+                        if (updatedCount > 0)
+                            System.out.println(updatedCount + " Record(s) Updated ");
+                        else
+                            System.out.println("No record found to update");
+                        break;
+
+                    case 3:
+                        System.out.print("Enter Student ID to Delete: ");
+                        int deleteId = Integer.parseInt(br.readLine());
+
+                        psmtDelete.setInt(1, deleteId);
+
+                        int deletedCount = psmtDelete.executeUpdate();
+                        if (deletedCount > 0)
+                            System.out.println(deletedCount + " Record(s) Deleted ");
+                        else
+                            System.out.println("No record found to delete");
+                        break;
+
+                    case 4:
+                        ResultSet rs = stmtSelect.executeQuery("SELECT * FROM students2");
+                        while (rs.next()) {
+                            System.out.println("Student ID: " + rs.getInt("student_id"));
+                            System.out.println("Student Name: " + rs.getString("student_name"));
+                            System.out.println("Student Age: " + rs.getInt("age"));
+                            System.out.println("Student Email: " + rs.getString("email"));
+                            System.out.println();
+                        }
+                        break;
+
+                    case 5:
+                        con.close();
+                        System.exit(0);
+                        break;
+
+                    default:
+                        System.out.println("Invalid Choice");
+                        break;
+                }
+            }
+        } catch (Exception e) { //exception
+            System.out.println(e);
+        }
+    }
+}

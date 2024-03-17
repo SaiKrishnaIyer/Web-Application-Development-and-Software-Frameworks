@@ -1,0 +1,117 @@
+package jdbcodbc;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+public class Sohan {
+
+    public static void main(String[] args) {
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system",
+                    "123456789");
+            Statement stmt = con.createStatement();
+            stmt.executeUpdate("CREATE TABLE employeedata (emp_id NUMBER PRIMARY KEY, emp_name VARCHAR(50), age NUMBER, email VARCHAR(50))");
+            System.out.println("Table created successfully.....");
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            PreparedStatement psmtInsert = con.prepareStatement("INSERT INTO employeedata VALUES (?, ?, ?, ?)");
+            PreparedStatement psmtUpdate = con.prepareStatement("UPDATE employeedata SET age = ?, email = ? WHERE emp_id = ?");
+            PreparedStatement psmtDelete = con.prepareStatement("DELETE FROM employeedata WHERE emp_id = ?");
+            Statement stmtSelect = con.createStatement();
+
+            while (true) {
+                System.out.println("\n1. Insert employee");
+                System.out.println("2. Update employee");
+                System.out.println("3. Delete employee");
+                System.out.println("4. View All employee");
+                System.out.println("5. Exit");
+                System.out.print("Enter your choice: ");
+                int choice = Integer.parseInt(br.readLine());
+
+                switch (choice) {
+                    case 1:
+                        System.out.print("Enter employee ID: ");
+                        int id = Integer.parseInt(br.readLine());
+                        System.out.print("Enter employee Name: ");
+                        String name = br.readLine();
+                        System.out.print("Enter employee Age: ");
+                        int age = Integer.parseInt(br.readLine());
+                        System.out.print("Enter employee Email: ");
+                        String email = br.readLine();
+
+                        psmtInsert.setInt(1, id);
+                        psmtInsert.setString(2, name);
+                        psmtInsert.setInt(3, age);
+                        psmtInsert.setString(4, email);
+
+                        int insertedCount = psmtInsert.executeUpdate();
+                        if (insertedCount > 0)
+                            System.out.println(insertedCount + " Record(s) Inserted ");
+                        else
+                            System.out.println("No record inserted");
+                        break;
+
+                    case 2:
+                        System.out.print("Enter employee ID to Update: ");
+                        int updateId = Integer.parseInt(br.readLine());
+                        System.out.print("Enter New Age: ");
+                        int newAge = Integer.parseInt(br.readLine());
+                        System.out.print("Enter New Email: ");
+                        String newEmail = br.readLine();
+
+                        psmtUpdate.setInt(1, newAge);
+                        psmtUpdate.setString(2, newEmail);
+                        psmtUpdate.setInt(3, updateId);
+
+                        int updatedCount = psmtUpdate.executeUpdate();
+                        if (updatedCount > 0)
+                            System.out.println(updatedCount + " Record(s) Updated ");
+                        else
+                            System.out.println("No record found to update");
+                        break;
+
+                    case 3:
+                        System.out.print("Enter employee ID to Delete: ");
+                        int deleteId = Integer.parseInt(br.readLine());
+
+                        psmtDelete.setInt(1, deleteId);
+
+                        int deletedCount = psmtDelete.executeUpdate();
+                        if (deletedCount > 0)
+                            System.out.println(deletedCount + " Record(s) Deleted ");
+                        else
+                            System.out.println("No record found to delete");
+                        break;
+
+                    case 4:
+                        ResultSet rs = stmtSelect.executeQuery("SELECT * FROM employeedata");
+                        while (rs.next()) {
+                            System.out.println("Employee ID: " + rs.getInt("emp_id"));
+                            System.out.println("Employee Name: " + rs.getString("emp_name"));
+                            System.out.println("Employee Age: " + rs.getInt("age"));
+                            System.out.println("Employee Email: " + rs.getString("email"));
+                            System.out.println();
+                        }
+                        break;
+
+                    case 5:
+                        con.close();
+                        System.exit(0);
+                        break;
+
+                    default:
+                        System.out.println("Invalid Choice");
+                        break;
+                }
+            }
+        } catch (Exception e) { //exception
+            System.out.println(e);
+        }
+    }
+}
