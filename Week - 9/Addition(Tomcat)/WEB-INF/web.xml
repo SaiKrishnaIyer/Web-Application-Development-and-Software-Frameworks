@@ -1,0 +1,11 @@
+<web-app>
+<servlet>
+<servlet-name>Addition1</servlet-name>
+<servlet-class>Addition</servlet-class>
+</servlet>
+
+<servlet-mapping>
+<servlet-name>Addition1</servlet-name>
+<url-pattern>/Addition1</url-pattern>
+</servlet-mapping>
+</web-app>
